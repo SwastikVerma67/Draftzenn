@@ -220,15 +220,20 @@
         connectBtn.type = 'button';
         connectBtn.className = 'btn btn-primary';
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
-        connectBtn.addEventListener('click', function () {
-          connectBtn.disabled = true;
-          connectBtn.textContent = 'Connecting\u2026';
-          window.DraftzennYouTubeIntegration.connect().catch(function (err) {
-            connectBtn.disabled = false;
-            connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
-            openBackendModal(err.message);
+         connectBtn.addEventListener('click', function () {
+        if (window.DraftzennAuth) {
+          window.DraftzennAuth.getCurrentUser().then(function (user) {
+            var userId = (user && user.id) ? encodeURIComponent(user.id) : 'u_testing_creator';
+            window.location.href = '/api/youtube/connect?userId=' + userId;
+          }).catch(function (err) {
+            console.error(err);
+            window.location.href = '/api/youtube/connect';
           });
-        });
+        } else {
+          window.location.href = '/api/youtube/connect';
+        }
+      });
+
         actions.appendChild(connectBtn);
       } else {
         var syncBtn = document.createElement('button');
