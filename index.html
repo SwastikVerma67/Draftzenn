@@ -67,5 +67,16 @@
 <script src="/js/supabase-auth-provider.js"></script>
 <script src="/js/auth-provider.js"></script>
 <script src="/js/nav.js"></script>
+<script>
+  // Wait for the page to load and check if Supabase has a logged-in user session
+  window.addEventListener('load', async () => {
+    // If you are using Supabase directly on the window object:
+    const session = localStorage.getItem('sb-auth-token') || localStorage.getItem('supabase.auth.token');
+    if (session) {
+      window.location.href = '/dashboard.html';
+    }
+  });
+</script>
+
 </body>
 </html>
