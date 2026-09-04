@@ -220,27 +220,33 @@
         connectBtn.type = 'button';
         connectBtn.className = 'btn btn-primary';
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
-        connectBtn.addEventListener('click', function () {
-        var sessionData = localStorage.getItem('sb-auth-token') || localStorage.getItem('supabase.auth.token');
-        var realUserId = '';
-
-        if (sessionData) {
-          try {
-            var parsed = JSON.parse(sessionData);
-            realUserId = parsed?.user?.id || parsed?.currentSession?.user?.id || parsed?.data?.user?.id || '';
-          } catch (e) {
-            console.error("Session parse error:", e);
-          }
-        }
-
-        if (realUserId && realUserId.trim() !== '') {
-          window.location.href = '/api/youtube/connect?userId=' + encodeURIComponent(realUserId);
-        } else {
-          alert('Could not find your logged-in user profile. Please log out, sign back in, and try again.');
-        }
-      });
-
-
+             connectBtn.addEventListener('click', function () {
+        if (window.DraftzennAuth) {
+          // 1. Call your existing global auth framework to get the active user securely
+          window.DraftzennAuth.getCurrentUser().then(function (user) {
+            var userId = (user && user.id) ? encodeURIComponent(user.id) : '';
+            
+            if (userId !== '') {
+              // 2. Redirect with your real user ID cleanly
+              window.location.href = '/api/youtube/connect?userId=' + userId;
+            } else {
+              // Fallback checking custom storage if provider is initializing slow
+              var customRaw = localStorage.getItem('draftzenn_mock_session');
+              if (customRaw) {
+                try {
+                  var parsedMock = JSON.parse(customRaw);
+                  if (parsedMock && parsedMock.id) {
+                    window.location.href = '/api/youtube/connect?userId=' + encodeURIComponent(parsedMock.id);
+                    return;
+                  }
+                } catch(e) {}
+              }
+              alert('Could not find your logged-in user profile. Please log out, sign back in, and try again.');
+            }
+          }).catch(function (err) {
+            console.error("Auth layer check failed:", err);
+            window.location.href = '/api/youtube/connect';
+              });
       actions.appendChild(connectBtn);
     } else {
 
