@@ -220,31 +220,28 @@
         connectBtn.type = 'button';
         connectBtn.className = 'btn btn-primary';
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
+      connectBtn.addEventListener('click', function () {
+        // Read the user ID instantly out of your active browser session cache storage
+        var sessionData = localStorage.getItem('sb-auth-token') || localStorage.getItem('supabase.auth.token');
+        var userId = 'u_testing_creator';
 
-        actions.appendChild(connectBtn);
-      } else {
-        var syncBtn = document.createElement('button');
-        syncBtn.type = 'button';
-        syncBtn.className = 'btn btn-primary';
-        syncBtn.disabled = state === 'syncing';
-        syncBtn.textContent = state === 'syncing' ? 'Syncing\u2026' : 'Sync now';
-        syncBtn.addEventListener('click', function () {
-          syncBtn.disabled = true;
-          syncBtn.textContent = 'Syncing\u2026';
-          window.DraftzennYouTubeIntegration.sync()
-            .then(function (result) {
-              clearBanner();
-              renderBanner('success', 'Imported ' + result.importedCount +
-                (result.importedCount === 1 ? ' video.' : ' videos.') +
-                ' Manually entered Content History is untouched.');
-              return refreshYouTubeCard();
-            })
-            .catch(function (err) {
-              renderBanner('error', err.message || 'Sync failed. Please try again.');
-              return refreshYouTubeCard();
-            });
-        });
-        actions.appendChild(syncBtn);
+        if (sessionData) {
+          try {
+            var parsed = JSON.parse(sessionData);
+            var foundId = parsed?.user?.id || parsed?.currentSession?.user?.id;
+            if (foundId) {
+              userId = encodeURIComponent(foundId);
+            }
+          } catch (e) {
+            console.error("Session parse error:", e);
+          }
+        }
+
+            window.location.href = '/api/youtube/connect?userId=' + userId;
+      });
+
+      actions.appendChild(connectBtn);
+    } else {
 
         var disconnectBtn = document.createElement('button');
         disconnectBtn.type = 'button';
