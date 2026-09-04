@@ -220,25 +220,26 @@
         connectBtn.type = 'button';
         connectBtn.className = 'btn btn-primary';
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
-      connectBtn.addEventListener('click', function () {
-        // Read the user ID instantly out of your active browser session cache storage
+        connectBtn.addEventListener('click', function () {
         var sessionData = localStorage.getItem('sb-auth-token') || localStorage.getItem('supabase.auth.token');
-        var userId = 'u_testing_creator';
+        var realUserId = '';
 
         if (sessionData) {
           try {
             var parsed = JSON.parse(sessionData);
-            var foundId = parsed?.user?.id || parsed?.currentSession?.user?.id;
-            if (foundId) {
-              userId = encodeURIComponent(foundId);
-            }
+            realUserId = parsed?.user?.id || parsed?.currentSession?.user?.id || parsed?.data?.user?.id || '';
           } catch (e) {
             console.error("Session parse error:", e);
           }
         }
 
-            window.location.href = '/api/youtube/connect?userId=' + userId;
+        if (realUserId && realUserId.trim() !== '') {
+          window.location.href = '/api/youtube/connect?userId=' + encodeURIComponent(realUserId);
+        } else {
+          alert('Could not find your logged-in user profile. Please log out, sign back in, and try again.');
+        }
       });
+
 
       actions.appendChild(connectBtn);
     } else {
