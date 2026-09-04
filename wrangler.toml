@@ -1,0 +1,18 @@
+# Draftzenn — Cloudflare Pages configuration
+# -----------------------------------------------------------------------------
+# Minimal on purpose: Draftzenn is a static site (no build step) with a small
+# Pages Functions API boundary under /functions/api. This file exists mainly
+# so `wrangler pages dev` works locally; the Cloudflare Pages dashboard build
+# settings (Framework preset: None, Build command: none, Build output
+# directory: /) achieve the same thing for the deployed site and take
+# precedence there.
+#
+# Do NOT put secrets in this file — it is committed to the repo. Set
+# SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, GOOGLE_CLIENT_ID,
+# GOOGLE_CLIENT_SECRET, GOOGLE_REDIRECT_URI, OAUTH_STATE_SECRET, and
+# APP_BASE_URL as encrypted environment variables in the Cloudflare Pages
+# dashboard instead (Pages project -> Settings -> Environment variables).
+
+name = "draftzenn"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "."

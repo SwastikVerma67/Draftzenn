@@ -1,0 +1,9 @@
+{
+  "name": "draftzenn-api",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Cloudflare Pages Functions boundary for real YouTube OAuth + sync, under /functions/api. The rest of Draftzenn is a static site with no build step.",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.45.0"
+  }
+}

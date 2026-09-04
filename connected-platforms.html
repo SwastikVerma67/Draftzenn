@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Connected Platforms — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/performance.css">
+<link rel="stylesheet" href="css/connected-platforms.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Draftzenn
+  </a>
+
+  <div class="nav-links" data-nav-links>
+    <a href="dashboard.html#creator-radar">Creator Radar</a>
+    <a href="content-plan.html" data-nav-plan-link>My Content Plan</a>
+    <a href="performance.html" data-nav-performance-link>Creator Performance</a>
+    <a href="content-history.html" data-nav-history-link>Content History</a>
+    <a href="connected-platforms.html" data-nav-connections-link>Connected Platforms</a>
+    <div class="nav-user" data-auth-signed-in style="display:none;">
+      <span>Signed in as <span class="nav-user-name" data-auth-name>—</span></span>
+      <button type="button" class="btn btn-ghost" data-auth-logout>Log out</button>
+    </div>
+  </div>
+
+  <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<main class="dashboard-main" data-connections-content style="display:none;">
+
+  <div class="dashboard-header">
+    <div class="dashboard-header-row">
+      <div>
+        <p class="hero-eyebrow">Connected Platforms</p>
+        <h1>Connect your accounts</h1>
+        <p class="dashboard-subhead">See where Draftzenn will pull your content and performance data from once real connections are live.</p>
+      </div>
+      <a href="dashboard.html" class="btn btn-ghost dashboard-edit-profile-btn">Back to dashboard</a>
+    </div>
+    <p class="connections-intro">
+      Connecting a platform will let Draftzenn automatically import your content and performance data instead of
+      you entering it by hand. No account is connected yet on any platform.
+    </p>
+  </div>
+
+  <div class="demo-banner">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+    </svg>
+    <span><strong>Instagram and TikTok are coming soon.</strong> YouTube connections are real — connecting it takes you through Google's own sign-in and consent screen. Draftzenn only ever asks for read-only access to your own channel.</span>
+  </div>
+
+  <div data-status-banner></div>
+
+  <section class="section" data-connections-root>
+    <div class="section-head">
+      <h2>Your platforms</h2>
+    </div>
+
+    <div class="connections-grid" data-connections-grid>
+      <!-- Platform cards are rendered by js/connected-platforms.js -->
+    </div>
+  </section>
+
+</main>
+
+<!-- Coming soon modal -->
+<div class="modal-overlay" data-connection-modal hidden>
+  <div class="modal-dialog connection-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="connection-modal-title" data-connection-modal-dialog>
+    <button type="button" class="modal-close" data-connection-modal-close aria-label="Close">&times;</button>
+
+    <h2 id="connection-modal-title" data-connection-modal-title>Platform connection is coming soon.</h2>
+    <p>You'll be able to connect your account and automatically import your content and performance data.</p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" data-connection-modal-close-btn>Close</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Draftzenn — know what to create next.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/platform-connections.js"></script>
+<script src="js/normalized-creator-data.js"></script>
+<script src="js/content-history-data.js"></script>
+<script src="js/youtube-integration.js"></script>
+<script src="js/connected-platforms.js"></script>
+</body>
+</html>

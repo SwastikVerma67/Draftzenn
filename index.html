@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Draftzenn — Know What to Create Next</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Draftzenn
+  </a>
+
+  <div class="nav-links" data-nav-links>
+    <a href="#features">Features</a>
+    <a href="#about">About</a>
+    <div class="nav-actions" data-auth-signed-out>
+      <a href="login.html" class="btn btn-ghost">Log in</a>
+      <a href="signup.html" class="btn btn-primary">Sign up</a>
+    </div>
+    <div class="nav-user" data-auth-signed-in style="display:none;">
+      <span>Signed in as <a href="dashboard.html" class="nav-user-name" data-auth-name>—</a></span>
+      <button type="button" class="btn btn-ghost" data-auth-logout>Log out</button>
+    </div>
+  </div>
+
+  <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<main>
+  <section class="hero">
+    <p class="hero-eyebrow">Draftzenn</p>
+    <h1>Know what to create next — before everyone else.</h1>
+    <p class="lede">Draftzenn scans your niche for emerging trends and content opportunities, then helps you decide, create, publish, and improve — so you're never staring at a blank page wondering what's worth making.</p>
+    <div class="hero-actions">
+      <a href="signup.html" class="btn btn-primary">Create your account</a>
+      <a href="login.html" class="btn btn-ghost">I already have one</a>
+    </div>
+  </section>
+
+  <div class="demo-note">
+    <div class="demo-note-card">
+      <strong>About this page —</strong> this is an early product foundation built to give the Sign Up and Login screens somewhere to link to and back from. Authentication runs on Supabase Auth (email + password) — see <code>js/supabase-config.js</code> for where to add your project credentials, and <code>js/supabase-auth-provider.js</code> for the integration itself. Trend and opportunity data in the dashboard is placeholder demo content for now.
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  Draftzenn — know what to create next.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/nav.js"></script>
+</body>
+</html>

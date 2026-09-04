@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Dashboard — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Draftzenn
+  </a>
+
+  <div class="nav-links" data-nav-links>
+    <a href="#creator-radar">Creator Radar</a>
+    <a href="content-plan.html" data-nav-plan-link>My Content Plan</a>
+    <a href="performance.html" data-nav-performance-link>Creator Performance</a>
+    <a href="content-history.html" data-nav-history-link>Content History</a>
+    <a href="connected-platforms.html" data-nav-connections-link>Connected Platforms</a>
+    <div class="nav-user" data-auth-signed-in style="display:none;">
+      <span>Signed in as <span class="nav-user-name" data-auth-name>—</span></span>
+      <button type="button" class="btn btn-ghost" data-auth-logout>Log out</button>
+    </div>
+  </div>
+
+  <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<main class="dashboard-main" data-dashboard-content style="display:none;">
+
+  <div class="dashboard-header">
+    <div class="dashboard-header-row">
+      <div>
+        <p class="hero-eyebrow">Dashboard</p>
+        <h1>Welcome back, <span data-dashboard-name>—</span>.</h1>
+        <p class="dashboard-subhead">Here's what's worth making next, based on your niche.</p>
+      </div>
+      <a href="onboarding.html?edit=1" class="btn btn-ghost dashboard-edit-profile-btn">Edit profile</a>
+    </div>
+
+    <div class="context-bar">
+      <span class="context-chip">Niche: <strong data-context-niche>—</strong></span>
+      <span class="context-chip">Platform: <strong data-context-platform>—</strong></span>
+      <span class="context-chip">Content: <strong data-context-content-type>—</strong></span>
+      <span class="context-chip context-chip-muted">Signed in as <span data-dashboard-email>—</span></span>
+    </div>
+  </div>
+
+  <div class="welcome-banner" data-welcome-banner style="display:none;">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M6.5 10.2L8.7 12.5L13.7 7.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span><strong>Your Creator Radar is ready.</strong> We'll use your niche and platform to point you toward what's worth making next.</span>
+    <button type="button" class="welcome-banner-dismiss" data-welcome-dismiss aria-label="Dismiss">&times;</button>
+  </div>
+
+  <div class="demo-banner">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+    </svg>
+    <span><strong>Demo data.</strong> Everything below — trends, scores, opportunities — is
+      realistic placeholder content. Live trend detection isn't connected yet.</span>
+  </div>
+
+  <!-- Your Next Move -->
+  <section class="section" data-next-move-root>
+    <div class="section-head">
+      <h2>Your Next Move</h2>
+      <span class="section-sub">Demo data · updated today</span>
+    </div>
+
+    <div class="next-move-card">
+      <div class="score-ring" style="--score:0;" data-next-move-score-ring>
+        <div class="score-ring-inner">
+          <span class="num" data-next-move-score>—</span>
+          <span class="label">Score</span>
+        </div>
+      </div>
+      <div class="next-move-body">
+        <p class="next-move-eyebrow">What to create</p>
+        <h3 data-next-move-topic>—</h3>
+
+        <div class="next-move-points">
+          <div class="next-move-point">
+            <p class="next-move-point-label">Why now</p>
+            <p data-next-move-why>—</p>
+          </div>
+          <div class="next-move-point">
+            <p class="next-move-point-label">Suggested format</p>
+            <p data-next-move-format>—</p>
+          </div>
+          <div class="next-move-point">
+            <p class="next-move-point-label">Suggested action</p>
+            <p data-next-move-action>—</p>
+          </div>
+        </div>
+
+        <div class="next-move-meta">
+          <span data-next-move-platform>—</span>
+          <span data-next-move-trend>—</span>
+          <span data-next-move-competition>—</span>
+        </div>
+        <div class="next-move-actions">
+          <button type="button" class="btn btn-primary" disabled title="Coming soon">Start planning this</button>
+          <button type="button" class="btn btn-ghost btn-on-dark" disabled title="Coming soon">See why it's recommended</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creator Radar -->
+  <section class="section" id="creator-radar" data-radar-root>
+    <div class="section-head">
+      <h2>Creator Radar</h2>
+      <span class="section-sub">Last scan: today</span>
+    </div>
+
+    <div class="demo-banner">
+      <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+      </svg>
+      <span><strong>Demo data.</strong> These opportunities are realistic placeholder content, not live trend detection. Real trend scanning isn't connected yet.</span>
+    </div>
+
+    <!-- Radar Overview -->
+    <div class="radar-overview" data-radar-overview>
+      <div class="radar-overview-chips">
+        <span class="context-chip">Platform: <strong data-radar-overview-platform>—</strong></span>
+        <span class="context-chip">Niche: <strong data-radar-overview-niche>—</strong></span>
+        <span class="context-chip">Opportunities tracked: <strong data-radar-overview-count>—</strong></span>
+      </div>
+      <p class="radar-overview-status" data-radar-overview-status>Scanning your niche&hellip;</p>
+    </div>
+
+    <div class="radar-grid" data-radar-stats>
+      <!-- Stat cards are rendered by js/creator-radar.js -->
+    </div>
+
+    <!-- Creator Learning -->
+    <div class="radar-subsection" data-learning-root>
+      <div class="section-subhead">
+        <h3>Creator Learning</h3>
+        <span class="section-sub">Based on your logged results</span>
+      </div>
+      <div class="learning-card">
+        <ul class="recommend-reasons-list" data-learning-list></ul>
+        <p class="learning-empty" data-learning-empty style="display:none;"></p>
+      </div>
+    </div>
+
+    <!-- Recommended for You -->
+    <div class="radar-subsection" data-radar-recommended-section>
+      <div class="section-subhead">
+        <h3>Recommended for You</h3>
+        <span class="section-sub" data-radar-recommended-sub>Matched to your niche &amp; platforms</span>
+      </div>
+      <div class="opportunities-grid" data-radar-recommended-grid>
+        <!-- Recommended cards are rendered by js/creator-radar.js -->
+      </div>
+    </div>
+
+    <!-- Quick filters -->
+    <div class="radar-quick-filters" data-radar-quick-filters role="group" aria-label="Quick filters">
+      <button type="button" class="quick-filter-chip is-active" data-quick-filter="all" aria-pressed="true">All</button>
+      <button type="button" class="quick-filter-chip" data-quick-filter="highest" aria-pressed="false">Highest Opportunity</button>
+      <button type="button" class="quick-filter-chip" data-quick-filter="rising" aria-pressed="false">Rising</button>
+      <button type="button" class="quick-filter-chip" data-quick-filter="lowcomp" aria-pressed="false">Low Competition</button>
+    </div>
+
+    <!-- Filters -->
+    <div class="radar-filters">
+      <div class="filter-field">
+        <label for="radar-filter-platform">Platform</label>
+        <select id="radar-filter-platform" data-filter="platform"></select>
+      </div>
+      <div class="filter-field">
+        <label for="radar-filter-niche">Niche</label>
+        <select id="radar-filter-niche" data-filter="niche"></select>
+      </div>
+      <div class="filter-field">
+        <label for="radar-filter-status">Status</label>
+        <select id="radar-filter-status" data-filter="status"></select>
+      </div>
+      <button type="button" class="btn btn-ghost radar-reset-btn" data-radar-reset>Reset filters</button>
+    </div>
+
+    <div class="radar-subsection">
+      <div class="section-subhead">
+        <h3>All Opportunities</h3>
+        <span class="section-sub" data-radar-count>&mdash; results</span>
+      </div>
+      <div class="opportunities-grid" data-radar-grid>
+        <!-- Opportunity cards are rendered by js/creator-radar.js -->
+      </div>
+      <p class="radar-empty" data-radar-empty style="display:none;">No opportunities match these filters. Try widening your search or resetting filters.</p>
+    </div>
+  </section>
+
+</main>
+
+<!-- Opportunity Details modal -->
+<div class="modal-overlay" data-opportunity-modal hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="opportunity-modal-title" data-opportunity-modal-dialog>
+    <button type="button" class="modal-close" data-opportunity-modal-close aria-label="Close opportunity details">&times;</button>
+
+    <p class="opportunity-platform" data-modal-platform>—</p>
+    <h2 id="opportunity-modal-title" data-modal-topic>—</h2>
+    <div class="opportunity-tags modal-tags" data-modal-tags></div>
+
+    <div class="modal-score-row">
+      <div class="opportunity-score" data-modal-score-badge>—</div>
+      <div>
+        <p class="opportunity-detail-label">Opportunity score</p>
+        <p data-modal-score-text>—</p>
+      </div>
+    </div>
+
+    <div class="score-breakdown modal-score-breakdown" data-modal-breakdown>
+      <!-- Opportunity / Audience Fit / Personal Fit / Competition — rendered by js/opportunity-details.js -->
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Why this recommended to you?</p>
+      <ul class="recommend-reasons-list" data-modal-recommend></ul>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Why this score?</p>
+      <p data-modal-score-why>—</p>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Why it matters</p>
+      <p data-modal-why>—</p>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Recommended format</p>
+      <p data-modal-format>—</p>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Recommended next move</p>
+      <p data-modal-action>—</p>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-primary" data-opportunity-plan-btn>Plan This Content</button>
+      <a href="content-plan.html" class="btn btn-ghost" data-opportunity-view-plan-link style="display:none;">View My Content Plan</a>
+      <button type="button" class="btn btn-ghost" data-opportunity-modal-close-btn>Close</button>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Draftzenn — know what to create next.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/profile-provider.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/radar-data.js"></script>
+<script src="js/plan-data.js"></script>
+<script src="js/performance-data.js"></script>
+<script src="js/content-history-data.js"></script>
+<script src="js/creator-learning.js"></script>
+<script src="js/radar-scoring.js"></script>
+<script src="js/creator-radar.js"></script>
+<script src="js/opportunity-details.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>

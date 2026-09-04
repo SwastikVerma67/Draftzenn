@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Log in — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+
+<div class="auth-shell">
+
+  <aside class="auth-brand">
+    <div class="auth-brand-top">
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        Draftzenn
+      </a>
+    </div>
+
+    <div class="auth-quote">
+      <p>“Your audience isn't waiting for more content. They're waiting for the right content.”</p>
+      <cite>— on timing over volume</cite>
+    </div>
+
+    <div class="auth-brand-back">
+      New to Draftzenn? <a href="signup.html">Create an account</a>
+    </div>
+  </aside>
+
+  <main class="auth-panel">
+    <div class="auth-form-wrap">
+
+      <div class="auth-mobile-brand">
+        <a href="index.html" class="brand">
+          <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+          </svg>
+          Draftzenn
+        </a>
+      </div>
+
+      <h1>Welcome back</h1>
+      <p class="auth-subhead">Log in to see what's worth creating next.</p>
+
+      <form id="login-form" class="auth-form" novalidate>
+
+        <div id="form-banner" class="form-banner" role="alert" aria-live="polite">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="form-banner-text"></span>
+        </div>
+
+        <div id="field-email" class="field">
+          <label for="email">Email</label>
+          <div class="field-input-row">
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="you@example.com">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <div id="field-password" class="field">
+          <label for="password">Password</label>
+          <div class="field-input-row">
+            <input type="password" id="password" name="password" autocomplete="current-password" class="has-toggle" placeholder="Your password">
+            <button type="button" class="password-toggle" data-toggle-for="password" aria-label="Show password">
+              <svg class="icon-on" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 10S4.5 4 10 4s8.5 6 8.5 6-3 6-8.5 6-8.5-6-8.5-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.4"/>
+              </svg>
+              <svg class="icon-off" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.5 10S4.5 4 10 4s8.5 6 8.5 6-3 6-8.5 6-8.5-6-8.5-6Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+                <circle cx="10" cy="10" r="2.4" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M3 17L17 3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <button type="submit" id="login-submit" class="btn btn-primary btn-block auth-submit">
+          <span class="btn-spinner"></span>
+          <span class="btn-label">Log in</span>
+        </button>
+      </form>
+
+      <p class="auth-switch">New to Draftzenn? <a href="signup.html">Create an account</a></p>
+    </div>
+  </main>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/form-utils.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Content History — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/performance.css">
+<link rel="stylesheet" href="css/content-history.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Draftzenn
+  </a>
+
+  <div class="nav-links" data-nav-links>
+    <a href="dashboard.html#creator-radar">Creator Radar</a>
+    <a href="content-plan.html" data-nav-plan-link>My Content Plan</a>
+    <a href="performance.html" data-nav-performance-link>Creator Performance</a>
+    <a href="content-history.html" data-nav-history-link>Content History</a>
+    <a href="connected-platforms.html" data-nav-connections-link>Connected Platforms</a>
+    <div class="nav-user" data-auth-signed-in style="display:none;">
+      <span>Signed in as <span class="nav-user-name" data-auth-name>—</span></span>
+      <button type="button" class="btn btn-ghost" data-auth-logout>Log out</button>
+    </div>
+  </div>
+
+  <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<main class="dashboard-main" data-history-content style="display:none;">
+
+  <div class="dashboard-header">
+    <div class="dashboard-header-row">
+      <div>
+        <p class="hero-eyebrow">Content History</p>
+        <h1>Your Content History</h1>
+        <p class="dashboard-subhead">Log what you've already published or tested, so Draftzenn can start learning what's worked for you.</p>
+      </div>
+      <a href="dashboard.html" class="btn btn-ghost dashboard-edit-profile-btn">Back to dashboard</a>
+    </div>
+  </div>
+
+  <div class="demo-banner">
+    <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+      <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+    </svg>
+    <span><strong>Saved to this device.</strong> Content History is stored locally for now, tied to your account — it isn't synced to a server yet.</span>
+  </div>
+
+  <!-- Add content -->
+  <section class="section" data-history-form-root>
+    <div class="section-head">
+      <h2>Add content</h2>
+    </div>
+
+    <div class="performance-card">
+      <form id="history-form" class="performance-form" novalidate>
+
+        <div id="history-form-banner" class="form-banner" role="alert" aria-live="polite">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="form-banner-text"></span>
+        </div>
+
+        <div class="performance-form-grid">
+
+          <div id="field-topic" class="field" style="grid-column: 1 / -1;">
+            <label for="history-topic">Content title / topic</label>
+            <div class="field-input-row">
+              <input type="text" id="history-topic" name="topic" maxlength="140" placeholder="e.g. 5 budgeting mistakes beginners make">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-platform" class="field">
+            <label for="history-platform">Platform</label>
+            <div class="field-input-row">
+              <select id="history-platform" name="platform">
+                <option value="">Select a platform</option>
+                <option value="YouTube">YouTube</option>
+                <option value="Instagram">Instagram</option>
+                <option value="TikTok">TikTok</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-format" class="field">
+            <label for="history-format">Content format</label>
+            <div class="field-input-row">
+              <select id="history-format" name="format">
+                <option value="">Select a format</option>
+                <option value="Short / Reel">Short / Reel</option>
+                <option value="Long-form video">Long-form video</option>
+                <option value="Post / Carousel">Post / Carousel</option>
+                <option value="Livestream">Livestream</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-publish-date" class="field">
+            <label for="history-publish-date">Publish date</label>
+            <div class="field-input-row">
+              <input type="date" id="history-publish-date" name="publishDate">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-views" class="field">
+            <label for="history-views">Views</label>
+            <div class="field-input-row">
+              <input type="number" id="history-views" name="views" min="0" step="1" inputmode="numeric" placeholder="e.g. 3800">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-likes" class="field">
+            <label for="history-likes">Likes</label>
+            <div class="field-input-row">
+              <input type="number" id="history-likes" name="likes" min="0" step="1" inputmode="numeric" placeholder="e.g. 260">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-comments" class="field">
+            <label for="history-comments">Comments</label>
+            <div class="field-input-row">
+              <input type="number" id="history-comments" name="comments" min="0" step="1" inputmode="numeric" placeholder="e.g. 18">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+          <div id="field-shares" class="field">
+            <label for="history-shares">Shares</label>
+            <div class="field-input-row">
+              <input type="number" id="history-shares" name="shares" min="0" step="1" inputmode="numeric" placeholder="e.g. 9">
+            </div>
+            <div class="field-error">
+              <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+                <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+              </svg>
+              <span class="field-error-text"></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="performance-form-actions">
+          <button type="submit" id="history-submit" class="btn btn-primary">
+            <span class="btn-spinner"></span>
+            <span class="btn-label">Add to history</span>
+          </button>
+          <span class="performance-saved-note" data-history-saved-note></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- History list -->
+  <section class="section" data-history-list-root>
+    <div class="section-head">
+      <h2>History</h2>
+      <span class="section-sub" data-history-count>&mdash; entries</span>
+    </div>
+
+    <div class="history-list" data-history-list>
+      <!-- Rows are rendered by js/content-history.js -->
+    </div>
+
+    <div class="plan-empty" data-history-empty style="display:none;">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="6" width="26" height="30" rx="3" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M13 15H27M13 21H27M13 27H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="29" cy="29" r="7.5" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M29 26V29L31 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>No content added yet</h3>
+      <p>Adding what you've already published or tested helps Draftzenn understand what's actually worked for you — so future recommendations get sharper over time.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  Draftzenn — know what to create next.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/profile-provider.js"></script>
+<script src="js/form-utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/content-history-data.js"></script>
+<script src="js/content-history.js"></script>
+</body>
+</html>

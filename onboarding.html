@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>Set up your Creator Radar — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/onboarding.css">
+</head>
+<body>
+
+<div class="onboarding-shell">
+  <div class="onboarding-card" data-onboarding-card style="visibility:hidden;">
+
+    <div class="onboarding-brand">
+      <a href="index.html" class="brand">
+        <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+        Draftzenn
+      </a>
+    </div>
+
+    <p class="onboarding-eyebrow" data-onboarding-eyebrow>Creator Radar setup</p>
+    <h1 data-onboarding-title>Tell us about what you create</h1>
+    <p class="onboarding-subhead" data-onboarding-subhead>
+      A few quick details so Creator Radar can start pointing you toward the right ideas. Takes under a minute.
+    </p>
+
+    <form id="onboarding-form" class="onboarding-form" novalidate>
+
+      <div id="form-banner" class="form-banner" role="alert" aria-live="polite">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+        </svg>
+        <span class="form-banner-text"></span>
+      </div>
+
+      <div id="field-creator-name" class="field">
+        <label for="creator-name">Creator name</label>
+        <div class="field-input-row">
+          <input type="text" id="creator-name" name="creatorName" autocomplete="name" placeholder="How should we address you?">
+        </div>
+        <div class="field-error">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="field-error-text"></span>
+        </div>
+      </div>
+
+      <div id="field-platform" class="field">
+        <span class="field-group-label" id="platform-label">Primary platform</span>
+        <div class="choice-group" data-choice-group="platform" role="radiogroup" aria-labelledby="platform-label">
+          <label class="choice-pill"><input type="radio" name="platform" value="YouTube"><span>YouTube</span></label>
+          <label class="choice-pill"><input type="radio" name="platform" value="Instagram"><span>Instagram</span></label>
+          <label class="choice-pill"><input type="radio" name="platform" value="TikTok"><span>TikTok</span></label>
+          <label class="choice-pill"><input type="radio" name="platform" value="Other"><span>Other</span></label>
+        </div>
+        <div class="field-error">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="field-error-text"></span>
+        </div>
+      </div>
+
+      <div id="field-niche" class="field">
+        <span class="field-group-label" id="niche-label">Niche / category</span>
+        <div class="choice-group" data-choice-group="niche" role="radiogroup" aria-labelledby="niche-label">
+          <label class="choice-pill"><input type="radio" name="niche" value="Gaming"><span>Gaming</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Tech"><span>Tech</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Education"><span>Education</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Fitness"><span>Fitness</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Entertainment"><span>Entertainment</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Finance"><span>Finance</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Lifestyle"><span>Lifestyle</span></label>
+          <label class="choice-pill"><input type="radio" name="niche" value="Other"><span>Other</span></label>
+        </div>
+        <div class="field-error">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="field-error-text"></span>
+        </div>
+      </div>
+
+      <div id="field-content-type" class="field">
+        <span class="field-group-label" id="content-type-label">Content type</span>
+        <div class="choice-group" data-choice-group="contentType" role="radiogroup" aria-labelledby="content-type-label">
+          <label class="choice-pill"><input type="radio" name="contentType" value="Shorts/Reels"><span>Shorts / Reels</span></label>
+          <label class="choice-pill"><input type="radio" name="contentType" value="Long-form"><span>Long-form</span></label>
+          <label class="choice-pill"><input type="radio" name="contentType" value="Both"><span>Both</span></label>
+          <label class="choice-pill"><input type="radio" name="contentType" value="Other"><span>Other</span></label>
+        </div>
+        <div class="field-error">
+          <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+            <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+            <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+          </svg>
+          <span class="field-error-text"></span>
+        </div>
+      </div>
+
+      <button type="submit" id="onboarding-submit" class="btn btn-primary btn-block onboarding-submit">
+        <span class="btn-spinner"></span>
+        <span class="btn-label" data-onboarding-submit-label>Start my Creator Radar</span>
+      </button>
+    </form>
+
+    <p class="onboarding-back-link" data-onboarding-back-link style="display:none;">
+      <a href="dashboard.html">Back to dashboard</a>
+    </p>
+
+    <p class="onboarding-foot-note" data-onboarding-foot-note>You can update these details any time from your dashboard.</p>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/profile-provider.js"></script>
+<script src="js/form-utils.js"></script>
+<script src="js/onboarding.js"></script>
+</body>
+</html>

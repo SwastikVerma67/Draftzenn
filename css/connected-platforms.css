@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Draftzenn — Connected Platforms
+   ========================================================================== */
+
+.connections-intro {
+  max-width: 68ch;
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.connections-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 780px) {
+  .connections-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.connection-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--white);
+}
+
+.connection-card-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.connection-card-head h3 {
+  font-size: 18px;
+}
+
+.connection-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--paper-raised);
+}
+
+.connection-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.connection-icon-youtube {
+  color: #FF0000;
+}
+
+.connection-icon-instagram {
+  color: #C13584;
+}
+
+.connection-icon-tiktok {
+  color: #010101;
+}
+
+.connection-status {
+  align-self: flex-start;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  padding: 4px 12px;
+  background: var(--paper-raised);
+}
+
+.connection-card .btn {
+  align-self: flex-start;
+}
+
+.connection-note {
+  margin: -6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+/* ---- Coming soon modal --------------------------------------------------- */
+
+.connection-modal-dialog {
+  max-width: 440px;
+}
+
+.connection-modal-dialog p + p {
+  margin-top: 12px;
+}
+
+.connection-modal-dialog .modal-actions {
+  margin-top: 24px;
+}
+
+/* ---- Prompt 20: real YouTube states -------------------------------------- */
+
+.connection-status-connected,
+.connection-status-synced {
+  color: #1a7f37;
+  border-color: #1a7f37;
+}
+
+.connection-status-syncing,
+.connection-status-connecting {
+  color: #9a6b00;
+  border-color: #9a6b00;
+}
+
+.connection-status-error {
+  color: #c22b2b;
+  border-color: #c22b2b;
+}
+
+.connection-meta {
+  margin: -6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+.connection-meta strong {
+  color: var(--ink);
+}
+
+.connection-card-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.connection-error-text {
+  margin: -6px 0 0;
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: #c22b2b;
+}
+
+.page-banner {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.page-banner-success {
+  background: #eefaf1;
+  border: 1px solid #1a7f37;
+  color: #1a7f37;
+}
+
+.page-banner-error {
+  background: #fdeeee;
+  border: 1px solid #c22b2b;
+  color: #c22b2b;
+}

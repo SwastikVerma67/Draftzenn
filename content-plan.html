@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<title>My Content Plan — Draftzenn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/auth.css">
+<link rel="stylesheet" href="css/performance.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">
+    <svg class="brand-mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 20L15.5 8.5C16.6 7.4 16.6 5.6 15.5 4.5C14.4 3.4 12.6 3.4 11.5 4.5L4 12V20H4Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </svg>
+    Draftzenn
+  </a>
+
+  <div class="nav-links" data-nav-links>
+    <a href="dashboard.html#creator-radar">Creator Radar</a>
+    <a href="content-plan.html" data-nav-plan-link>My Content Plan</a>
+    <a href="performance.html" data-nav-performance-link>Creator Performance</a>
+    <a href="content-history.html" data-nav-history-link>Content History</a>
+    <a href="connected-platforms.html" data-nav-connections-link>Connected Platforms</a>
+    <div class="nav-user" data-auth-signed-in style="display:none;">
+      <span>Signed in as <span class="nav-user-name" data-auth-name>—</span></span>
+      <button type="button" class="btn btn-ghost" data-auth-logout>Log out</button>
+    </div>
+  </div>
+
+  <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-label="Toggle menu">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+    </svg>
+  </button>
+</nav>
+
+<main class="dashboard-main" data-dashboard-content style="display:none;">
+
+  <div class="dashboard-header">
+    <div class="dashboard-header-row">
+      <div>
+        <p class="hero-eyebrow">Dashboard</p>
+        <h1>My Content Plan</h1>
+        <p class="dashboard-subhead">Everything you've added from Creator Radar, in one place.</p>
+      </div>
+      <a href="dashboard.html" class="btn btn-ghost dashboard-edit-profile-btn">Back to Creator Radar</a>
+    </div>
+  </div>
+
+  <!-- My Content Plan -->
+  <section class="section" id="content-plan" data-content-plan-root>
+    <div class="section-head">
+      <h2>My Content Plan</h2>
+      <span class="section-sub" data-plan-count>&mdash; planned</span>
+    </div>
+
+    <!-- Active Plan -->
+    <div class="radar-subsection" data-plan-active-section>
+      <div class="section-subhead">
+        <h3>Active Plan</h3>
+        <span class="section-sub" data-plan-active-count>&mdash; active</span>
+      </div>
+      <div class="opportunities-grid" data-plan-active-grid>
+        <!-- Planned / In Progress cards are rendered by js/content-plan.js -->
+      </div>
+      <p class="radar-empty" data-plan-active-empty style="display:none;">Nothing in progress right now &mdash; everything you&rsquo;ve planned has moved to Published.</p>
+    </div>
+
+    <!-- Published -->
+    <div class="radar-subsection" data-plan-published-section style="display:none;">
+      <div class="section-subhead">
+        <h3>Published</h3>
+        <span class="section-sub" data-plan-published-count>&mdash; published</span>
+      </div>
+      <div class="opportunities-grid" data-plan-published-grid>
+        <!-- Published / Tested cards are rendered by js/content-plan.js -->
+      </div>
+    </div>
+
+    <div class="plan-empty" data-plan-empty style="display:none;">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="7" y="6" width="26" height="30" rx="3" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M13 15H27M13 21H27M13 27H21" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+        <circle cx="29" cy="29" r="7.5" fill="var(--paper)" stroke="currentColor" stroke-width="1.4"/>
+        <path d="M29 26V29L31 31" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <h3>No planned content yet</h3>
+      <p>Opportunities you add to your plan from Creator Radar will show up here, ready to track and act on.</p>
+      <a href="dashboard.html#creator-radar" class="btn btn-primary" data-plan-explore-btn>Explore Creator Radar</a>
+    </div>
+  </section>
+
+</main>
+
+
+<!-- Opportunity Details modal (opens when a plan card is clicked) -->
+<div class="modal-overlay" data-opportunity-modal hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="opportunity-modal-title" data-opportunity-modal-dialog>
+    <button type="button" class="modal-close" data-opportunity-modal-close aria-label="Close opportunity details">&times;</button>
+
+    <p class="opportunity-platform" data-modal-platform>—</p>
+    <h2 id="opportunity-modal-title" data-modal-topic>—</h2>
+    <div class="opportunity-tags modal-tags" data-modal-tags></div>
+
+    <div class="modal-score-row">
+      <div class="opportunity-score" data-modal-score-badge>—</div>
+      <div>
+        <p class="opportunity-detail-label">Opportunity score</p>
+        <p data-modal-score-text>—</p>
+      </div>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Why this recommended to you?</p>
+      <ul class="recommend-reasons-list" data-modal-recommend></ul>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Why it matters</p>
+      <p data-modal-why>—</p>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Recommended format</p>
+      <p data-modal-format>—</p>
+    </div>
+
+    <div class="opportunity-detail">
+      <p class="opportunity-detail-label">Recommended next move</p>
+      <p data-modal-action>—</p>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-primary" data-opportunity-plan-btn>Plan This Content</button>
+      <a href="#content-plan" class="btn btn-ghost" data-opportunity-view-plan-link style="display:none;">View My Content Plan</a>
+      <button type="button" class="btn btn-ghost" data-opportunity-modal-close-btn>Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Record Results modal (opens from a Published/Tested card's "Record
+     Results" / "Edit Results" button — js/content-results.js) -->
+<div class="modal-overlay" data-results-modal hidden>
+  <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="results-modal-title" data-results-modal-dialog>
+    <button type="button" class="modal-close" data-results-modal-close aria-label="Close record results">&times;</button>
+
+    <p class="opportunity-platform" data-results-modal-platform>—</p>
+    <h2 id="results-modal-title" data-results-modal-topic>—</h2>
+    <div class="opportunity-tags modal-tags" data-results-modal-tags></div>
+
+    <form id="results-form" novalidate>
+      <div id="results-form-banner" class="form-banner" role="alert" aria-live="polite">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+          <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+        </svg>
+        <span class="form-banner-text"></span>
+      </div>
+
+      <div class="performance-form-grid" style="margin-top: 20px;">
+
+        <div id="field-results-publish-date" class="field">
+          <label for="results-publish-date">Publish date</label>
+          <div class="field-input-row">
+            <input type="date" id="results-publish-date">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <div id="field-results-views" class="field">
+          <label for="results-views">Views</label>
+          <div class="field-input-row">
+            <input type="number" id="results-views" min="0" step="1" inputmode="numeric" placeholder="e.g. 10000">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <div id="field-results-likes" class="field">
+          <label for="results-likes">Likes</label>
+          <div class="field-input-row">
+            <input type="number" id="results-likes" min="0" step="1" inputmode="numeric" placeholder="e.g. 500">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <div id="field-results-comments" class="field">
+          <label for="results-comments">Comments</label>
+          <div class="field-input-row">
+            <input type="number" id="results-comments" min="0" step="1" inputmode="numeric" placeholder="e.g. 80">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+        <div id="field-results-shares" class="field">
+          <label for="results-shares">Shares</label>
+          <div class="field-input-row">
+            <input type="number" id="results-shares" min="0" step="1" inputmode="numeric" placeholder="e.g. 50">
+          </div>
+          <div class="field-error">
+            <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.4"/>
+              <path d="M10 6.5V10.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+              <circle cx="10" cy="13.2" r="0.9" fill="currentColor"/>
+            </svg>
+            <span class="field-error-text"></span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="modal-actions">
+        <button type="submit" id="results-submit" class="btn btn-primary">
+          <span class="btn-spinner"></span>
+          <span class="btn-label">Save results</span>
+        </button>
+        <button type="button" class="btn btn-ghost" data-results-modal-close-btn>Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  Draftzenn — know what to create next.
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/supabase-config.js"></script>
+<script src="js/supabase-auth-provider.js"></script>
+<script src="js/auth-provider.js"></script>
+<script src="js/profile-provider.js"></script>
+<script src="js/form-utils.js"></script>
+<script src="js/nav.js"></script>
+<script src="js/radar-data.js"></script>
+<script src="js/plan-data.js"></script>
+<script src="js/content-history-data.js"></script>
+<script src="js/opportunity-details.js"></script>
+<script src="js/content-results.js"></script>
+<script src="js/content-plan.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
