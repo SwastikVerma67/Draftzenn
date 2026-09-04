@@ -222,15 +222,11 @@
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
              connectBtn.addEventListener('click', function () {
         if (window.DraftzennAuth) {
-          // 1. Call your existing global auth framework to get the active user securely
           window.DraftzennAuth.getCurrentUser().then(function (user) {
             var userId = (user && user.id) ? encodeURIComponent(user.id) : '';
-            
             if (userId !== '') {
-              // 2. Redirect with your real user ID cleanly
               window.location.href = '/api/youtube/connect?userId=' + userId;
             } else {
-              // Fallback checking custom storage if provider is initializing slow
               var customRaw = localStorage.getItem('draftzenn_mock_session');
               if (customRaw) {
                 try {
@@ -246,25 +242,33 @@
           }).catch(function (err) {
             console.error("Auth layer check failed:", err);
             window.location.href = '/api/youtube/connect';
-              });
+          });
+        } else {
+          window.location.href = '/api/youtube/connect';
+        }
+      });
+
       actions.appendChild(connectBtn);
     } else {
-
-        var disconnectBtn = document.createElement('button');
-        disconnectBtn.type = 'button';
-        disconnectBtn.className = 'btn btn-ghost';
-        disconnectBtn.textContent = 'Disconnect';
-        disconnectBtn.addEventListener('click', function () {
-          disconnectBtn.disabled = true;
+      var disconnectBtn = document.createElement('button');
+      disconnectBtn.type = 'button';
+      disconnectBtn.className = 'btn btn-ghost';
+      disconnectBtn.textContent = 'Disconnect';
+      
+      disconnectBtn.addEventListener('click', function () {
+        disconnectBtn.disabled = true;
+        if (window.DraftzennYouTubeIntegration) {
           window.DraftzennYouTubeIntegration.disconnect()
             .then(refreshYouTubeCard)
             .catch(function (err) {
               disconnectBtn.disabled = false;
-              renderBanner('error', err.message || 'Couldn\u2019t disconnect. Please try again.');
+              renderBanner('error', err.message || 'Couldn\'t disconnect. Please try again.');
             });
-        });
-        actions.appendChild(disconnectBtn);
-      }
+        }
+      });
+      actions.appendChild(disconnectBtn);
+    }
+
 
       card.appendChild(actions);
       return card;
