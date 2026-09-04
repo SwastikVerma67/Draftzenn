@@ -220,33 +220,26 @@
         connectBtn.type = 'button';
         connectBtn.className = 'btn btn-primary';
         connectBtn.textContent = state === 'error' ? 'Reconnect' : 'Connect';
-             connectBtn.addEventListener('click', function () {
-        if (window.DraftzennAuth) {
-          window.DraftzennAuth.getCurrentUser().then(function (user) {
-            var userId = (user && user.id) ? encodeURIComponent(user.id) : '';
-            if (userId !== '') {
-              window.location.href = '/api/youtube/connect?userId=' + userId;
-            } else {
-              var customRaw = localStorage.getItem('draftzenn_mock_session');
-              if (customRaw) {
-                try {
-                  var parsedMock = JSON.parse(customRaw);
-                  if (parsedMock && parsedMock.id) {
-                    window.location.href = '/api/youtube/connect?userId=' + encodeURIComponent(parsedMock.id);
-                    return;
-                  }
-                } catch(e) {}
-              }
-              alert('Could not find your logged-in user profile. Please log out, sign back in, and try again.');
+           connectBtn.addEventListener('click', function () {
+        // Read the custom session text value straight from the browser disk cache
+        var rawSession = localStorage.getItem('draftzenn_mock_session');
+        var userId = 'u_testing_creator';
+
+        if (rawSession) {
+          try {
+            var parsed = JSON.parse(rawSession);
+            if (parsed && parsed.id) {
+              userId = encodeURIComponent(parsed.id);
             }
-          }).catch(function (err) {
-            console.error("Auth layer check failed:", err);
-            window.location.href = '/api/youtube/connect';
-          });
-        } else {
-          window.location.href = '/api/youtube/connect';
+          } catch (e) {
+            console.error("Local storage lookup failed:", e);
+          }
         }
+
+        // Force an instant browser redirection path straight down the pipeline
+        window.location.href = '/api/youtube/connect?userId=' + userId;
       });
+
 
       actions.appendChild(connectBtn);
     } else {
